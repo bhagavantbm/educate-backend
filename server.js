@@ -6,10 +6,13 @@ const cors = require('cors');
 dotenv.config();
 const app = express();
 
-app.use(cors());
-app.use(express.json());
+app.use(cors({
+  origin: ['https://educate-frontend.vercel.app/'],
+  credentials: true,
+}));app.use(express.json());
 
 // Routes
+
 app.use('/api/auth', require('./routes/authRoutes'));
 app.use('/api/videos', require('./routes/videoRoutes'));
 
